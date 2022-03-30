@@ -1,0 +1,124 @@
+<!--&lt;!&ndash;Phần 1 : Data Binding(binding 1 chiều, binding 2 chiều)&ndash;&gt;-->
+<!--<input type="text" [(ngModel)]="name">-->
+
+<!--<h4>{{name}}</h4>-->
+
+<!--<button (click)="resetValue()">Reset</button>-->
+
+<!--&lt;!&ndash;Phần 2: Cách sử dụng Angular Component&ndash;&gt;-->
+
+<!--<h4>Student Detail</h4>-->
+<!--<p>Student ID: {{student.id}}</p>-->
+<!--<p>Student Name: {{student.name}}</p>-->
+<!--<p>Student Mark: {{student.mark}}</p>-->
+<!--<p>Student Image: <img [src]="student.image" alt="" style="width: 30px; height: 30px"></p>-->
+<!--<label >Change Mark via event binding</label>-->
+<!--<input type="number" (change)="changeMark($event)"><br>-->
+<!--<label >Change Mark via 2way binding</label>-->
+<!--<input type="number" [(ngModel)] = "student.mark">-->
+
+<!--&lt;!&ndash;Phần 3: Hiển thị list bằng *ngFor&ndash;&gt;-->
+
+<!--<h4>Student List</h4>-->
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Student Id</th>-->
+<!--    <th>Student Name</th>-->
+<!--    <th>Student Mark</th>-->
+<!--    <th>Student Image</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr *ngFor="let student of students">-->
+<!--    <td>{{student.id}}</td>-->
+<!--    <td>{{student.name}}</td>-->
+<!--    <td>{{student.mark}}</td>-->
+<!--    <td><img [src]="student.image" alt="" style="height: 30px; width: 30px"></td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+
+<!--&lt;!&ndash;Sử dụng *ngFor trong Angular, vòng lặp lồng&ndash;&gt;-->
+
+<!--<div *ngFor="let item of arr">-->
+<!--  <div *ngFor="let temp of item">-->
+<!--    <h2>{{temp}}</h2>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;Sử dụng [ngSwitch] *ngSwitchCase&ndash;&gt;-->
+<!--<label>Input Number</label>-->
+<!--<input type="text" [(ngModel)]="num">-->
+
+<!--<div [ngSwitch]="num">-->
+<!--  <div *ngSwitchCase="0">Zero</div>-->
+<!--  <div *ngSwitchCase="1">One</div>-->
+<!--  <div *ngSwitchCase="2">Two</div>-->
+<!--  <div *ngSwitchCase="3">Three</div>-->
+<!--  <div *ngSwitchCase="4">Four</div>-->
+<!--  <div *ngSwitchCase="5">Five</div>-->
+<!--  <div *ngSwitchDefault>This is Defaul</div>-->
+<!--</div>-->
+
+<!--&lt;!&ndash;Sử dụng *ngIf / *ngIf; else trong Angular&ndash;&gt;-->
+
+<!--<label>Check box</label>-->
+<!--<input type="checkbox" [(ngModel)]="showMe">-->
+
+<!--<div *ngIf="showMe; else elseBlock">-->
+<!--  <p>Box checked</p>-->
+<!--</div>-->
+<!--<hr>-->
+<!--<div *ngIf="!showMe">-->
+<!--  <p>Box unchecked</p>-->
+<!--</div>-->
+<!--<hr>-->
+<!--<ng-template #elseBlock>-->
+<!--  <p>Box unchecked</p>-->
+<!--</ng-template>-->
+
+<!--Sử dụng [ngClass] trong Angular => dùng trong css-->
+<!--Sử dụng [ngStyle] trong Angular => dùng trong css-->
+
+<!--Sử dụng ReactiveForm trong Angular-->
+
+<h4>Demo FormGroup</h4>
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <th><label for="firstName">First Name</label></th>
+      <td>
+        <input type="text" class="form-control" id="firstName" formControlName="firstName">
+      </td>
+    </tr>
+    <tr>
+      <th><label for="firstName">Last Name</label></th>
+      <td>
+        <input type="text" class="form-control" id="lastName" formControlName="lastName">
+      </td>
+    </tr>
+    <tr>
+      <th><label for="email">Email</label></th>
+      <td>
+        <input type="text" class="form-control" id="email" formControlName="email">
+      </td>
+    </tr>
+    <tr>
+      <th><label for="gender">Gender</label></th>
+      <td>
+        <input type="radio" value="male" id="gender" name="gender" formControlName="gender">Male
+        <input type="radio" value="female" id="gender" name="gender" formControlName="gender">Female
+      </td>
+    </tr>
+    <tr>
+      <th><label for="country">Country</label></th>
+      <td>
+        <select name="country" id="country" class="form-control" formControlName="country">
+          <option [ngValue]="country.id" *ngFor="let country of countryList">{{country.name}}</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <button type="submit" class="btn btn-primary">SUBMIT</button>
+</form>
