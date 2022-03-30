@@ -12,6 +12,7 @@ import {RatingBarComponent} from './rating-bar/rating-bar.component';
 import {CountdownTimerComponent} from './countdown-timer/countdown-timer.component';
 import {TodoComponent} from './todo/todo.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { TestAngularComponent } from './test-angular/test-angular.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { RegisterFormComponent } from './register-form/register-form.component';
     CountdownTimerComponent,
     TodoComponent,
     RegisterFormComponent,
+    TestAngularComponent,
   ],
   imports: [
     BrowserModule,

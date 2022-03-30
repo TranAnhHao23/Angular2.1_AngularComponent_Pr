@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Student} from "./student";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-test-angular',
@@ -35,11 +35,11 @@ export class TestAngularComponent implements OnInit {
   ]
 
   contactForm = new FormGroup({
-    firstName: new FormControl(),
-    lastName: new FormControl(),
-    email: new FormControl(),
-    gender: new FormControl(),
-    country: new FormControl()
+    firstName: new FormControl('', [Validators.required, Validators.pattern(/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/)]),
+    lastName: new FormControl('', [Validators.minLength(5),Validators.required]),
+    email: new FormControl('', Validators.email),
+    gender: new FormControl('', Validators.required),
+    country: new FormControl('', Validators.required)
   });
 
 

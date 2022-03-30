@@ -82,20 +82,30 @@
 <!--Sử dụng [ngStyle] trong Angular => dùng trong css-->
 
 <!--Sử dụng ReactiveForm trong Angular-->
-
+<!--Validate dữ liệu-->
 <h4>Demo FormGroup</h4>
+
 <form [formGroup]="contactForm" (ngSubmit)="submit()">
   <table>
     <tr>
       <th><label for="firstName">First Name</label></th>
       <td>
         <input type="text" class="form-control" id="firstName" formControlName="firstName">
+
+      </td>
+      <td >
+        <p *ngIf="contactForm.get('firstName')?.touched && contactForm.get('firstName')?.hasError('required')" style="color: red">FirstName is not valid </p>
+        <p *ngIf="contactForm.get('firstName')?.touched && contactForm.get('firstName')?.hasError('pattern')" style="color: red">FirstName is not regex </p>
       </td>
     </tr>
     <tr>
-      <th><label for="firstName">Last Name</label></th>
+      <th><label for="lastName">Last Name</label></th>
       <td>
         <input type="text" class="form-control" id="lastName" formControlName="lastName">
+      </td>
+      <td>
+        <p *ngIf="contactForm.get('lastName')?.touched && contactForm.get('lastName')?.hasError('required')">Khong duoc de trong</p>
+        <p *ngIf="contactForm.get('lastName')?.touched && contactForm.get('lastName')?.hasError('minlength')">Phai tren 5 ky tu</p>
       </td>
     </tr>
     <tr>
@@ -120,5 +130,7 @@
       </td>
     </tr>
   </table>
-  <button type="submit" class="btn btn-primary">SUBMIT</button>
+  <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid">SUBMIT</button>
 </form>
+
+
